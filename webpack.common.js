@@ -27,10 +27,14 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]', // Ensures images are output in the 'images/' folder
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]', // Output images to 'images/' folder in dist
+            },
+          },
+        ],
       },
     ],
   },
